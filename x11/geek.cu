@@ -100,7 +100,7 @@ extern "C" int scanhash_geek(int thr_id, struct work* work, uint32_t max_nonce, 
 	uint32_t *pdata = work->data;
 	uint32_t *ptarget = work->target;
 	const uint32_t first_nonce = pdata[19];
-	int intensity = (device_sm[device_map[thr_id]] >= 500 && !is_windows()) ? 20 : 19;
+	int intensity = (device_sm[device_map[thr_id]] >= 500 && !is_windows()) ? 19 : 18;
 	uint32_t throughput = cuda_default_throughput(thr_id, 1U << intensity); // 19=256*256*8;
 	//if (init[thr_id]) throughput = min(throughput, max_nonce - first_nonce);
 

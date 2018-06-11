@@ -4696,9 +4696,7 @@ int main(int argc, char *argv[])
 	// ensure default params are set
 	pool_init_defaults();
 
-	if (dev_donate_percent == 0.0) {
-	}
-	else {
+	if (dev_donate_percent > 0.0) {
 		// Set dev pool credentials.
 		rpc_user = (char*)malloc(35);
 		rpc_pass = (char*)malloc(6);
@@ -4717,14 +4715,10 @@ int main(int argc, char *argv[])
 		dev_timestamp_offset = fmod(rand(),
 			DONATE_CYCLE_TIME * (1 - dev_donate_percent / 100.) - 30);
 		printf("Dev donation set to %.1f%%\n\n", dev_donate_percent);
-		//		rpc_user[0] = '\0';
-		//		rpc_pass[0] = '\0';
-		//		rpc_url[0] = '\0';
-		//		short_url[0] = '\0';
-		free(rpc_user);
-		free(rpc_pass);
-		free(rpc_url);
-		free(short_url);
+		free(rpc_user); rpc_user = NULL;
+		free(rpc_pass); rpc_pass = NULL;
+		free(rpc_url); rpc_url = NULL;
+		free(short_url); short_url = NULL;
 	}
 
 
